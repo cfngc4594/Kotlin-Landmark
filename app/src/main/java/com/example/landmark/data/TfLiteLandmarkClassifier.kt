@@ -49,8 +49,7 @@ class TfLiteLandmarkClassifier(
         return results?.flatMap { classifications ->
             classifications.categories.map { category ->
                 Classification(
-                    name = category.displayName,
-                    score = category.score
+                    name = category.displayName, score = category.score
                 )
             }.distinctBy { it.name }
         } ?: emptyList()
@@ -59,10 +58,10 @@ class TfLiteLandmarkClassifier(
 
     private fun getOrientationFromRotation(rotation: Int): ImageProcessingOptions.Orientation {
         return when (rotation) {
-            Surface.ROTATION_0 -> ImageProcessingOptions.Orientation.RIGHT_TOP
-            Surface.ROTATION_90 -> ImageProcessingOptions.Orientation.TOP_LEFT
-            Surface.ROTATION_180 -> ImageProcessingOptions.Orientation.RIGHT_BOTTOM
-            else -> ImageProcessingOptions.Orientation.BOTTOM_RIGHT
+            Surface.ROTATION_0 -> ImageProcessingOptions.Orientation.TOP_LEFT
+            Surface.ROTATION_90 -> ImageProcessingOptions.Orientation.RIGHT_TOP
+            Surface.ROTATION_180 -> ImageProcessingOptions.Orientation.BOTTOM_RIGHT
+            else -> ImageProcessingOptions.Orientation.LEFT_BOTTOM
         }
     }
 }
