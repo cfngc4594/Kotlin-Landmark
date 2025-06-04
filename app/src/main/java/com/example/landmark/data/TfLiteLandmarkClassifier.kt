@@ -58,10 +58,19 @@ class TfLiteLandmarkClassifier(
 
     private fun getOrientationFromRotation(rotation: Int): ImageProcessingOptions.Orientation {
         return when (rotation) {
-            Surface.ROTATION_0 -> ImageProcessingOptions.Orientation.TOP_LEFT
-            Surface.ROTATION_90 -> ImageProcessingOptions.Orientation.RIGHT_TOP
-            Surface.ROTATION_180 -> ImageProcessingOptions.Orientation.BOTTOM_RIGHT
-            else -> ImageProcessingOptions.Orientation.LEFT_BOTTOM
+            0 -> ImageProcessingOptions.Orientation.TOP_LEFT
+
+            90 -> {
+                println("TODO: rotation is 90")
+                ImageProcessingOptions.Orientation.TOP_LEFT
+            }
+
+            180 -> ImageProcessingOptions.Orientation.LEFT_BOTTOM
+
+            else -> {
+                println("TODO: rotation is 270")
+                ImageProcessingOptions.Orientation.BOTTOM_RIGHT
+            }
         }
     }
 }
